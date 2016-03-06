@@ -1,0 +1,247 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Jigsass-tools-mq - v0.0.0</title><link rel="stylesheet" href="assets/css/main.css"><script type="text/javascript">WebFontConfig={google:{families:["Roboto:400,100,300,500:latin"]}},function(){var e=document.createElement("script");e.src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js",e.type="text/javascript",e.async="true";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();</script><meta name="viewport" content="width=device-width"><meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"><!-- Open Graph tags --><meta property="og:title" content="Jigsass-tools-mq - SassDoc"><meta property="og:type" content="website"><meta property="og:description" content="<p>Easy peasy media queries. Based on Kaelig&#39;s Sass-mq, with a few minor adjustments for JigSass</p>
+"><!-- Thanks to Sass-lang.com for the icons --><link href="assets/images/favicon.png" rel="shortcut icon"></head><body><aside class="sidebar" role="nav"><div class="sidebar__header"><img class="sidebar__logo" src="assets/images/favicon.png"></div><div class="sidebar__body"><button type="button" class="btn-toggle js-btn-toggle" data-alt="Open all">Close all</button><p class="sidebar__item sidebar__item--heading" data-slug="undefined"><a href="#undefined">General</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-variable"><a href="#undefined-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-name="jigsass-breakpoints" data-type="variable"><a href="#variable-jigsass-breakpoints">jigsass-breakpoints</a></li><li class="sidebar__item sassdoc__item" data-name="jigsass-mq-responsive" data-type="variable"><a href="#variable-jigsass-mq-responsive">jigsass-mq-responsive</a></li><li class="sidebar__item sassdoc__item" data-name="jigsass-mq-static-breakpoint" data-type="variable"><a href="#variable-jigsass-mq-static-breakpoint">jigsass-mq-static-breakpoint</a></li><li class="sidebar__item sassdoc__item" data-name="jigsass-mq-show-breakpoints" data-type="variable"><a href="#variable-jigsass-mq-show-breakpoints">jigsass-mq-show-breakpoints</a></li><li class="sidebar__item sassdoc__item" data-name="jigsass-mq-media-type" data-type="variable"><a href="#variable-jigsass-mq-media-type">jigsass-mq-media-type</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-mixin"><a href="#undefined-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-name="jigsass-mq" data-type="mixin"><a href="#mixin-jigsass-mq">jigsass-mq</a></li><li class="sidebar__item sassdoc__item" data-name="jigsass-mq-tweakpoints" data-type="mixin"><a href="#mixin-jigsass-mq-tweakpoints">jigsass-mq-tweakpoints</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="undefined-function"><a href="#undefined-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-name="jigsass-mq-get-breakpoint-width" data-type="function"><a href="#function-jigsass-mq-get-breakpoint-width">jigsass-mq-get-breakpoint-width</a></li><li class="sidebar__item sassdoc__item" data-name="_jigsass-mq-px2em" data-type="function"><a href="#function-_jigsass-mq-px2em">_jigsass-mq-px2em</a></li></ul></div></div></aside><article class="main" role="main"><header class="header" role="banner"><div class="container"><h1 class="header__title">Jigsass-tools-mq - 0.0.0</h1><div class="sassdoc__searchbar searchbar"><label for="js-search-input" class="visually-hidden">Search</label><div class="searchbar__form" id="js-search"><input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search"><ul class="searchbar__suggestions" id="js-search-suggestions"></ul></div></div></div></header><section class="main__section"><div class="container"><h1 id="jigsass-tools-mq">JigSass Tools Mq</h1><p><a href="https://npmjs.org/package/jigsass-tools-mq"><img src="https://badge.fury.io/js/jigsass-tools-mq.svg" alt="NPM version"></a> <a href="https://travis-ci.org/TxHawks/jigsass-tools-mq"><img src="https://travis-ci.org/TxHawks/jigsass-tools-mq.svg?branch=master" alt="Build Status"></a> <a href="https://david-dm.org/TxHawks/jigsass-tools-mq"><img src="https://david-dm.org/TxHawks/jigsass-tools-mq.svg?theme=shields.io" alt="Dependency Status"></a></p><blockquote><p>Easy peasy media queries. Based on Kaelig&#39;s Sass-mq, with a few minor adjustments for JigSass</p></blockquote><h2 id="installation">Installation</h2><p>Using npm:</p><pre><code class="lang-sh">npm i -S jigsass-tools-mq
+</code></pre><h2 id="usage">Usage</h2><p><code>scss/index.scss</code> is JigSass Tools Mq&#39;s importable file.</p><p><code>@import &#39;path/to/jigsass-tools-mq&#39;;</code> should give you all you need.</p><p>Documentation covering the Sass functionality of <code>jigsass-tools-mq</code> is located in The <code>sassdoc</code> directory.</p><p>Documentation covering the css provided by <code>jigsass-tools-mq</code> is located in the <code>styleguide</code> directory.</p><p><strong>License:</strong> MIT</p></div></section><section class="main__section"><h1 class="main__heading" id="undefined"><div class="container">General</div></h1><section class="main__sub-section" id="undefined-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="variable-jigsass-breakpoints"><h3 class="item__heading"><a class="item__name" href="#variable-jigsass-breakpoints">jigsass-breakpoints</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$jigsass-breakpoints: (
+  lengths: (
+    default: 0,
+    tiny: 320px,
+    small: 480px,
+    meduim: 600px,
+    large: 1024px,
+    x-large: 1280px,
+  ),
+
+  features: (
+    landscape: &#39;(orientation: landscape)&#39;,
+    partrait: &#39;(orientation: portrait)&#39;,
+    hidpi: &#39;(-webkit-min-device-pixel-ratio: 1.3),
+            (min-resolution: 120dpi),
+            (min-resolution: 1.3dppx)&#39;,
+  ),
+) !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Breakpoint list</p><p>Name your breakpoints in a way that creates a ubiquitous language across team members. It will improve communication between stakeholders, designers, developers, and testers.</p><p>The <code>jigsass-mq</code> mixin will try and resolve values from the <code>lengths</code> sub-map when evaluating the <code>$from</code> and <code>$until</code> arguments. When evaluating the <code>$misc</code> argument, it will try and resolve values from the <code>features</code> sub-map.</p></div><h3 class="item__sub-heading">Type</h3><p><code>Map</code></p><h3 class="item__sub-heading">Map structure</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">Map key</span>Name</th><th scope="col"><span class="visually-hidden">Map key</span>Description</th><th scope="col"><span class="visually-hidden">Map key</span>Type</th><th scope="col"><span class="visually-hidden">Map key</span>Value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>lengths</code></th><td data-label="desc"><p>A map of <code>name: width</code> key-value pairs, defining widths for commonly used media queries. Used when evaluating the <code>$from</code> and <code>$until</code> arguments.</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>features</code></th><td data-label="desc"><p>A map of <code>name: rule</code> key-value pairs, defining commonly used miscellaneous media-query features. Used when evaluating the <code>$from</code> and <code>$until</code> arguments.</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr></tbody></table><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixin-jigsass-mq"><code>jigsass-mq</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#mixin-jigsass-mq-tweakpoints"><code>jigsass-mq-tweakpoints</code></a></li></ul></section><section class="main__item container item" id="variable-jigsass-mq-responsive"><h3 class="item__heading"><a class="item__name" href="#variable-jigsass-mq-responsive">jigsass-mq-responsive</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$jigsass-mq-responsive: true !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Responsive mode</p><p>Set to <code>false</code> to enable support for browsers that do not support @media queries, (IE &lt;= 8, Firefox &lt;= 3, Opera &lt;= 9)</p><p>You could create a stylesheet served exclusively to older browsers, where @media queries are rasterized</p></div><h3 class="item__sub-heading">Type</h3><p><code>Boolean</code></p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>// old-ie.scss
+$jigsass-mq-responsive: false;
+@import &#39;main&#39;; // @media queries in this file will be
+                // rasterized up to $jigsass-mq-static-breakpoint
+                // larger breakpoints will be ignored</code></pre></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixin-jigsass-mq"><code>jigsass-mq</code></a></li></ul><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/TxHawks/jigsass-tools-mq#responsive-mode-off">- Disabled responsive mode documentation</a></li></ul></section><section class="main__item container item" id="variable-jigsass-mq-static-breakpoint"><h3 class="item__heading"><a class="item__name" href="#variable-jigsass-mq-static-breakpoint">jigsass-mq-static-breakpoint</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$jigsass-mq-static-breakpoint: l !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Static breakpoint (for fixed-width layouts)</p><p>Define the breakpoint from $jigsass-breakpoints that should be used as the target width for the fixed-width layout (i.e. when $jigsass-mq-responsive is set to &#39;false&#39;) in an old-ie.scss</p></div><h3 class="item__sub-heading">Type</h3><p><code>String</code></p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>// tablet-only.scss
+//
+// Ignore all styles above `tablet` breakpoint,
+// and fix the styles (e.g. layout) at `tablet` width
+$jigsass-mq-responsive: false;
+$jigsass-mq-static-breakpoint: tablet;
+@import &#39;main&#39;; // @media queries in this file will be rasterized up to tablet
+                 // larger breakpoints will be ignored</code></pre></div></section><section class="main__item container item" id="variable-jigsass-mq-show-breakpoints"><h3 class="item__heading"><a class="item__name" href="#variable-jigsass-mq-show-breakpoints">jigsass-mq-show-breakpoints</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$jigsass-mq-show-breakpoints: () !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Show breakpoints in the top right corner</p><p>If you want to display the currently active breakpoint in the top right corner of your site during development, add the breakpoints to this list, ordered by width, e.g. (mobile, tablet, desktop).</p></div><h3 class="item__sub-heading">Type</h3><p><code>Map</code></p></section><section class="main__item container item" id="variable-jigsass-mq-media-type"><h3 class="item__heading"><a class="item__name" href="#variable-jigsass-mq-media-type">jigsass-mq-media-type</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$jigsass-mq-media-type: all !default;</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Customize the media type (e.g. <code>@media screen</code> or <code>@media print</code>) By default jigsass-mq does not restrict the media type (<code>@media …</code>)</p></div><h3 class="item__sub-heading">Type</h3><p><code>String</code></p><h3 class="item__sub-heading">Links</h3><ul class="list-unstyled"><li><a href="https://github.com/TxHawks/tools-jigsass-mq#changing-media-type">Full documentation and examples</a></li></ul></section></section><section class="main__sub-section" id="undefined-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="mixin-jigsass-mq"><h3 class="item__heading"><a class="item__name" href="#mixin-jigsass-mq">jigsass-mq</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin jigsass-mq($from, $until, $misc, $media-type) { 
+  $min-width: 0;
+  $max-width: 0;
+  $misc-features: false;
+  $media-query: &#39;&#39;;
+  $breakpoints: $jigsass-breakpoints;
+  $responsive: $jigsass-mq-responsive;
+
+  // From: this breakpoint (inclusive)
+  @if $from {
+    @if type-of($from) == number {
+      $min-width: _jigsass-mq-px2em($from);
+    }
+    @else {
+      $min-width: _jigsass-mq-px2em(jigsass-mq-get-breakpoint-width($from, $breakpoints));
+    }
+  }
+
+  // Until: that breakpoint (exclusive)
+  @if $until {
+    @if type-of($until) == number {
+      $max-width: _jigsass-mq-px2em($until);
+    }
+    @else {
+      $max-width: _jigsass-mq-px2em(jigsass-mq-get-breakpoint-width($until, $breakpoints)) - .01em;
+    }
+  }
+
+  // Misc: non-widths features
+  @if $misc {
+    $misc-features: &#39;&#39;;
+
+    @each $feature in $misc {
+      @if (jigsass-deep-has-key($jigsass-breakpoints, features, $feature)) {
+        $feature: jigsass-get($jigsass-breakpoints, features, $feature);
+      }
+
+      @if (type-of($feature) == string) {
+        $feature: if(str-slice($feature, 1, 1) == &#39;(&#39;, $feature, &#39;(&#39; + $feature);
+        $feature: if(str-slice($feature, -1) == &#39;)&#39;, $feature, $feature + &#39;)&#39;);
+
+        $misc-features: &#39;#{$misc-features} and #{$feature}&#39;;
+      }
+      @else {
+        @warn &#39;jigsass-mq: `#{inspect($misc)}` will be ignored, since it is a &#39; +
+          &#39;#{type-of($misc)}, not a string.&#39;;
+      }
+    }
+
+    // Remove unnecessary &#39; and &#39; at beginning of `$misc-features`
+    $misc-features: str-slice(unquote($misc-features), 6);
+  }
+
+  // Responsive support is disabled, rasterize the output outside @media blocks
+  // The browser will rely on the cascade itself.
+  @if $responsive == false {
+    $static-breakpoint-width: jigsass-mq-get-breakpoint-width($static-breakpoint, $breakpoints);
+    $target-width: _jigsass-mq-px2em($static-breakpoint-width);
+
+    // Output only rules that start at or span our target width
+    @if (
+      $misc == false and
+      $min-width &lt;= $target-width and
+      ($until == false or $max-width &gt;= $target-width)
+    ) {
+      @content;
+    }
+  }
+
+  // Responsive support is enabled, output rules inside @media queries
+  @else {
+    @if $min-width != 0 { $media-query: &#39;#{$media-query} and (min-width: #{$min-width})&#39;; }
+    @if $max-width != 0 { $media-query: &#39;#{$media-query} and (max-width: #{$max-width})&#39;; }
+    @if $misc-features        { $media-query: &#39;#{$media-query} and #{$misc-features}&#39;; }
+
+    // Remove unnecessary media query prefix &#39;all and &#39;
+    @if ($media-type == &#39;all&#39; and $media-query != &#39;&#39;) {
+      $media-type: &#39;&#39;;
+      $media-query: str-slice(unquote($media-query), 6);
+    }
+
+    // Don&#39;t create meaningless media-queries
+    @if ($from != 0 or $until ot $misc or $media-type != all) {
+      @media #{$media-type + $media-query} { @content; }
+    }
+    @else { @content; }
+  }
+ }" data-collapsed="@mixin jigsass-mq($from, $until, $misc, $media-type) { ... }"><code>@mixin jigsass-mq($from, $until, $misc, $media-type) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Generate media queries</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter</span>Name</th><th scope="col"><span class="visually-hidden">parameter</span>Description</th><th scope="col"><span class="visually-hidden">parameter</span>Type</th><th scope="col"><span class="visually-hidden">parameter</span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$from</code></th><td data-label="desc"><p>(false) - Min-width (inclusive) in pixels, or one of <code>$jigsass-breakpoints.lengths</code></p></td><td data-label="type"><code>String</code> or <code>Number</code> or <code>Boolean</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$until</code></th><td data-label="desc"><p>(false) - Max-width (exclusive) in pixels, or one of <code>$jigsass-breakpoints.lengths</code></p></td><td data-label="type"><code>String</code> or <code>Number</code> or <code>Boolean</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$misc</code></th><td data-label="desc"><p>(false) - Miscellaneous media query parameters. One of <code>$jigsass-breakpoints.features</code> or a free-form string. Can also be a list of multiple media-query features.</p></td><td data-label="type"><code>String</code> or <code>List</code> or <code>Boolean</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$media-type</code></th><td data-label="desc"><p>($jigsass-mq-media-type) - Media type: screen, print…</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr></tbody></table><h3 class="item__sub-heading">Content</h3><p>This mixin allows extra content to be passed (through the <code>@content</code> directive). Role: styling rules, wrapped into a @media query when responsive mode in turned on.</p><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#function-_jigsass-mq-px2em"><code>_jigsass-mq-px2em</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#function-jigsass-mq-get-breakpoint-width"><code>jigsass-mq-get-breakpoint-width</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variable-jigsass-breakpoints"><code>jigsass-breakpoints</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variable-jigsass-mq-responsive"><code>jigsass-mq-responsive</code></a></li></ul><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.element {
+  @include mq($from: mobile) {
+    color: red;
+  }
+  @include mq($until: tablet) {
+    color: blue;
+  }
+  @include mq(mobile, tablet) {
+    color: green;
+  }
+  @include mq($from: tablet, $misc: landscape hidpi) {
+    color: teal;
+  }
+  @include mq(950px) {
+    color: hotpink;
+  }
+  @include mq(tablet, $media-type: screen) {
+    color: hotpink;
+  }
+  // Advanced use:
+  @include mq(x-large:, $static-breakpoint: x-large) {
+    color: hotpink;
+  }
+}</code></pre></div></section><section class="main__item container item" id="mixin-jigsass-mq-tweakpoints"><h3 class="item__heading"><a class="item__name" href="#mixin-jigsass-mq-tweakpoints">jigsass-mq-tweakpoints</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin jigsass-mq-tweakpoints($tweakpoints: (), $length-tweakpoints: (), $length-tweakpoints: (), $overwrite) { 
+  // Save original state of breakpoints configuration.
+  $_original-breakpoints: $jigsass-breakpoints;
+
+  @if ($overwrite) {
+    @if (length($tweakpoints) != 0) {
+      $jigsass-breakpoints: $tweakpoints !global;
+    }
+    // Overwrite breakpoints configuration
+    @if (length($length-tweakpoints) != 0) {
+      $jigsass-breakpoints: jigsass-set(
+        $jigsass-breakpoints,
+        lengths,
+        $length-tweakpoints
+      ) !global;
+    }
+    @if (length($feature-tweakpoints) != 0) {
+      $jigsass-breakpoints: jigsass-set(
+        $jigsass-breakpoints,
+        features,
+        $feature-tweakpoints
+      ) !global;
+    }
+  }
+  @else {
+    // Extend breakpoints configuration
+    $new-breakpoints: if(length($tweakpoints) != 0, $tweakpoints, ());
+
+    @if (length($length-tweakpoints) != 0) {
+      $new-breakpoints: jigsass-deep-merge($new-breakpoints, (lengths: $length-tweakpoints));
+    }
+    @if (length($feature-tweakpoints) != 0) {
+      $new-breakpoints: jigsass-deep-merge($new-breakpoints, (features: $feature-tweakpoints));
+    }
+
+    $jigsass-breakpoints: jigsass-deep-merge($jigsass-breakpoints, $new-breakpoints) !global;
+  }
+
+  @content;
+
+  // Restore original state of breakpoints configuration.
+  $jigsass-breakpoints: $_original-breakpoints !global;
+ }" data-collapsed="@mixin jigsass-mq-tweakpoints($tweakpoints: (), $length-tweakpoints: (), $length-tweakpoints: (), $overwrite) { ... }"><code>@mixin jigsass-mq-tweakpoints($tweakpoints: (), $length-tweakpoints: (), $length-tweakpoints: (), $overwrite) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Tweak the list of defined breakpoints within the scope of the mixin&#39;s <code>@content</code></p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter</span>Name</th><th scope="col"><span class="visually-hidden">parameter</span>Description</th><th scope="col"><span class="visually-hidden">parameter</span>Type</th><th scope="col"><span class="visually-hidden">parameter</span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$tweakpoints</code></th><td data-label="desc"><p>A map of named breakpoints to add to (or be used to overwrite) the existing breakpoints in $jigsass-breakpoints.</p></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>()</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$length-tweakpoints</code></th><td data-label="desc"><p>A map of named lengths to add to (or be used to overwrite) the existing length-breakpoints.</p></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>()</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$length-tweakpoints</code></th><td data-label="desc"><p>A map of named miscellaneous media-query features to add to (or be used to overwrite) the existing feature-breakpoints.</p></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>()</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$overwrite</code></th><td data-label="desc"><p>(false)</p><ul><li>Determines whether the tweakpoints should overwritethe existing breakpoints, or be merged into them.</li></ul></td><td data-label="type"><code>Boolean</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr></tbody></table><h3 class="item__sub-heading">Content</h3><p>This mixin allows extra content to be passed (through the <code>@content</code> directive).<h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#variable-jigsass-breakpoints"><code>jigsass-breakpoints</code></a></li></ul><h3 class="item__sub-heading">Example</h3><div class="item__example example"><div class="example__description"><p>Add a custom length breakpoint</p></div><pre class="example__code language-scss"><code>@include jigsass-tweakpoints((&#39;masthead-collapse&#39;: 550px)) {
+  @include jigsass-mq(masthead-collapse) {
+    .masthead {
+      // ...
+    }
+  }
+}</code></pre></div><div class="item__example example"><div class="example__description"><p>Add a custom feature breakpoint</p></div><pre class="example__code language-scss"><code>@include jigsass-tweakpoints($feature-tweakpoints: (&#39;8bit&#39;: (&#39;min-color&#39;: 8))) {
+  @include jigsass-mq($misc: 8bit) {
+    .page--has-color {
+      // ...
+    }
+  }
+}</code></pre></div><div class="item__example example"><div class="example__description"><p>Temporarily overwrite existing length breakpoints</p></div><pre class="example__code language-scss"><code>$masthead-bps: (small: 350px, medium: 500px, large: 800px);
+
+@include jigsass-tweakpoints($masthead-bps, $overwrite: false) {
+  $lengths: map-get($jigsass-breakpoints, lengths);
+  @each $length in $lengths {
+    @include jigsass-mq($length) {
+      // ...
+    }
+  }
+}</code></pre></div></p></section></section><section class="main__sub-section" id="undefined-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="function-jigsass-mq-get-breakpoint-width"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-jigsass-mq-get-breakpoint-width">jigsass-mq-get-breakpoint-width</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function jigsass-mq-get-breakpoint-width($name, $breakpoints) { 
+  @if jigsass-deep-has-key($breakpoints, lengths, $name) {
+    @return jigsass-get($breakpoints, lengths, $name);
+  }
+  @else {
+    @warn &#39;jigsass-mq-get-breakpoint-width: Breakpoint #{$name} wasn\&#39;t found in $breakpoints.&#39;;
+    @return $name;
+  }
+ }" data-collapsed="@function jigsass-mq-get-breakpoint-width($name, $breakpoints) { ... }"><code>@function jigsass-mq-get-breakpoint-width($name, $breakpoints) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Get a breakpoint&#39;s width</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter</span>Name</th><th scope="col"><span class="visually-hidden">parameter</span>Description</th><th scope="col"><span class="visually-hidden">parameter</span>Type</th><th scope="col"><span class="visually-hidden">parameter</span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$name</code></th><td data-label="desc"><p>Breakpoint to get the width of</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$breakpoints</code></th><td data-label="desc"><p>($jigsass-breakpoints) - The map to search for the breakpoint in.</p></td><td data-label="type"><code>Map</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Number</code> &mdash;<p>Value in pixels</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>$tablet-width: jigsass-mq-get-breakpoint-width(tablet);
+@media (min-width: jigsass-mq-get-breakpoint-width(desktop)) {}</code></pre></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixin-jigsass-mq"><code>jigsass-mq</code></a></li></ul></section><section class="main__item container item" id="function-_jigsass-mq-px2em"><h3 class="item__heading"><span class="item__access">[private]</span> <a class="item__name" href="#function-_jigsass-mq-px2em">_jigsass-mq-px2em</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function _jigsass-mq-px2em($px, $supress-warnings) { 
+  $_browser-default-font-size: 16px;
+
+  // Ensure `$px` is a number
+  @if (type-of($px) != &#39;number&#39;) {
+    @error &#39;_jigsass-mq-px2em: Only numbers can be converted in into ems. &#39; +
+      &#39;#{$px} is a #{type-of($px)}.&#39;;
+  }
+
+  // Return a unitless number if `$px` is 0
+  @if ($px / ($px * 0 + 1) == 0) {
+    @return 0;
+  }
+
+  // Convert unitless number to pixels
+  @if (unitless($px)) {
+    @if (not $supress-warnings) {
+      @warn &#39;_jigsass-mq-px2em: Assuming #{$px} is in pixels&#39;;
+    }
+
+    @return _jigsass-mq-px2em($px * 1px);
+  }
+
+  // Return em values as is.
+  @if (unit($px) == em) {
+    @return $px;
+  }
+
+  // Error out on all other non-pixel units.
+  @if (unit($px) != px) {
+    @error &#39;_jigsass-mq-px2em: Only px values can be safely converted into ems.&#39;
+  }
+
+  @return ($px / $_browser-default-font-size) * 1em;
+ }" data-collapsed="@function _jigsass-mq-px2em($px, $supress-warnings) { ... }"><code>@function _jigsass-mq-px2em($px, $supress-warnings) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Convert Pixel values to ems based on the browser&#39;s default font-size.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter</span>Name</th><th scope="col"><span class="visually-hidden">parameter</span>Description</th><th scope="col"><span class="visually-hidden">parameter</span>Type</th><th scope="col"><span class="visually-hidden">parameter</span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$px</code></th><td data-label="desc"><p>value to convert</p></td><td data-label="type"><code>Number</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$supress-warnings</code></th><td data-label="desc"><p>(false) - Suppress warnings about converting unitless numbers into pixels.</p></td><td data-label="type"><code>Boolean</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr></tbody></table><h3 class="item__sub-heading">Returns</h3><div class="item__description item__description--inline"><code>Number</code> &mdash;<p>The converted number in ems</p></div><h3 class="item__sub-heading">Throws</h3><ul class="list-unstyled"><li><p>_jigsass-mq-px2em: Only numbers can be converted in into ems.</p></li><li><p>_jigsass-mq-px2em: Only px values can be safely converted into ems.</p></li></ul><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#mixin-jigsass-mq"><code>jigsass-mq</code></a></li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --><span class="project-info__name">Jigsass-tools-mq</span><!-- Version --> <span class="project-info__version">- v0.0.0</span><!-- License --> <span class="project-info__license">, under MIT</span></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>
