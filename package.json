@@ -9,7 +9,6 @@
   "files": [
     "scss"
   ],
-  "private": true,
   "repository": {
     "type": "git",
     "url": "TxHawks/jigsass-tools-mq"
