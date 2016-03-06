@@ -1,0 +1,19 @@
+// *****************************
+// Importer for testing partials
+// *****************************
+
+// General use testing helpers
+@import 'test/helpers/_test-helpers.scss';
+
+// project files.
+@import 'scss/index.scss';
+
+$alt-bps: (
+  lengths: (
+    phone: 320px,
+    tablet: 600px,
+  ),
+  features: (
+    8bit: '(min-color: 8)',
+  )
+);

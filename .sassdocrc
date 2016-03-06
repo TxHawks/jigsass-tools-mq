@@ -1,0 +1,12 @@
+{
+  "theme": "jigsass",
+
+  "display": {
+    "access": ["public", "private"],
+    "alias": true
+  },
+
+  "descriptionPath": "DOCS.md",
+  "privatePrefix": "^[_-]",
+    "sort": ["group", "access"]
+}

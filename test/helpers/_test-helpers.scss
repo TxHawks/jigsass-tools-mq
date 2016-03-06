@@ -1,0 +1,66 @@
+//// @group testing-helpers
+
+/// Check if a variable equals a value
+/// @param {*} $value - A value to compare the value of $var with.
+/// @param {*} $var - The variable to test.
+/// @returns {boolean}
+@function jig-var-equals($value, $var) {
+  @return $var == $value;
+}
+
+/// Check if a variable is of a certain type
+/// @param {string} $type - A type to compare with the type of $var.
+/// @param {*} $var- The variable to test.
+/// @returns {boolean}
+@function jig-var-type-is($type, $var) {
+  @return type-of($var) == $type;
+}
+
+/// Check if a map's key equals a value
+/// @param {*} $value - A value to compare the value of a key in $map with.
+/// @param {map} $map - The map to test.
+/// @param {arglist} $keys... - A recursive chain of keys.
+/// @returns {boolean}
+@function jig-map-key-equals($value, $map, $keys...) {
+  @return _map-get-deep($map, $keys...) == $value;
+}
+
+/// Check if a map's key is of a certain type
+/// @param {map} $map - The to test.
+/// @param {string} $type - A type to compare the tested key's type against.
+/// @param {arglist} $keys... - A recursive chain of keys.
+/// @returns {boolean}
+@function jig-map-key-type-is($type, $map, $keys...) {
+  @return type-of(_map-get-deep($map, $keys...)) == $type;
+}
+
+
+/// Get the value of a key from a map, including in nested maps.
+/// Nesting can go as deep as needed, where keys are separated by commas.
+/// ---
+/// @access private
+/// ---
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Key chain
+/// ---
+/// @returns {*} The value stored in the last key provided.
+/// ---
+@function _jig-map-get-deep($map, $keys...) {
+  $value: $map;
+  @each $key in $keys {
+    @if (type-of($value) == 'map') {
+      @if(not map-has-key($value, $key)) {
+        @error '_jig-map-get-deep: Could not find #{$key} in #{$map}.';
+      }
+      $value: map-get($value, $key);
+      @if ($value == null) {
+        @error '_jig-map-get-deep: ${map} has no value for "#{$key}".';
+      }
+    }
+    @else {
+      @error '_jig-map-get-deep: #{$map} is a type-of($map), not a map.';
+    }
+  }
+
+  @return $value;
+}
