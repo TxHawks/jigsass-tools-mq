@@ -24,6 +24,12 @@ Or [download](https://raw.githubusercontent.com/TxHawks/jigsass-tools-mq/master/
 Override default named breakpoints with your own by defining the 
 `jigsass-breakpoints` variable **before** `jigsass-mq` is imported:
 
+Breakpoint names and values can and should be redefined to fit a
+project design and the language used be the team working on it.
+However, please keep in mind that **the JigSass framework depends
+on a 0-sized length breakpoint being defined**, as it is internally
+used to set up default values in several places.
+
 ```scss
 // The `jigsass-mq` mixin will try and resolve values from 
 // the `lengths` sub-map when evaluating the `$from` and 
