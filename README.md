@@ -75,7 +75,9 @@ color: red;
   }
 }
 ```
+
 Will compile to:
+
 ```css
 .responsive {
   color: red;
@@ -87,6 +89,13 @@ Will compile to:
   }
 }
 ```
+
+The `jigsass-mq` mixin stores the currently active `min-width` breakpoint in the 
+`$jigsass-mq-active-breakpoint` variable, which is available to the `@content` during the 
+execution of of the mixin.
+
+When not in the context of a media query, `$jigsass-mq-active-breakpoint` is set to
+the zero-width length breakpoint.
 
 ** The full documentation is available at 
 [https://txhawks.github.io/jigsass-tools-mq/](https://txhawks.github.io/jigsass-tools-mq/)

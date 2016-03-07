@@ -62,6 +62,31 @@ $jigsass-breakpoints: (
 ) !default;
 
 
+/// Get the name of the zero-sized breakpoint
+/// ---
+/// @param {Map} $breakpoints ($jigsass-breakpoints)
+///   - The map of breakpoints to iterate over.
+/// ---
+/// @return {String} - The name of the default breakpoint
+/// ---
+@function _get-default-breakpoint($breakpoints: $jigsass-breakpoints) {
+  $default-bp: null;
+
+  @each $bp-name, $bp in map-get($breakpoints, lengths) {
+    @if (($bp / ($bp * 0 + 1)) == 0 and not $default-bp) {
+      $default-bp: $bp-name;
+    }
+  }
+
+  @return $default-bp;
+}
+
+
+/// The name of the currently active min-width breakpoint
+/// @type String
+$jigsass-mq-active-breakpoint: _get-default-breakpoint();
+
+
 /// Responsive mode
 ///
 /// Set to `false` to enable support for browsers that do not support @media queries,
@@ -211,12 +236,21 @@ $jigsass-mq-media-type: all !default;
   $breakpoints: $jigsass-breakpoints;
   $responsive: $jigsass-mq-responsive;
 
+  // Save the default breakpoint
+  $_default-bp: $jigsass-mq-active-breakpoint;
+  $_active-bp: $_default-bp;
+
   // From: this breakpoint (inclusive)
   @if $from {
     @if type-of($from) == number {
       $min-width: _jigsass-mq-px2em($from);
     }
     @else {
+      @if type-of(jigsass-mq-get-breakpoint-width($from, $breakpoints)) == 'string' {
+        @error 'jigsass-mq: ${$from} is not a length breakpoint in `$jigsass-breakpoints`.';
+      }
+      // Set the active min-width breakpoint
+      $_active-bp: $from;
       $min-width: _jigsass-mq-px2em(jigsass-mq-get-breakpoint-width($from, $breakpoints));
     }
   }
@@ -227,6 +261,10 @@ $jigsass-mq-media-type: all !default;
       $max-width: _jigsass-mq-px2em($until);
     }
     @else {
+      @if type-of(jigsass-mq-get-breakpoint-width($from, $breakpoints)) == 'string' {
+        @error 'jigsass-mq: ${$from} is not a length breakpoint in `$jigsass-breakpoints`.';
+      }
+
       $max-width: _jigsass-mq-px2em(jigsass-mq-get-breakpoint-width($until, $breakpoints)) - .01em;
     }
   }
@@ -286,7 +324,13 @@ $jigsass-mq-media-type: all !default;
 
     // Don't create meaningless media-queries
     @if ($from != 0 or $until ot $misc or $media-type != all) {
+      // Set the active min-width breakpoint
+      $jigsass-mq-active-breakpoint: $_active-bp !global;
+
       @media #{$media-type + $media-query} { @content; }
+
+      // Restore the default breakpoint as the default one.
+      $jigsass-mq-active-breakpoint: $_default-bp !global;
     }
     @else { @content; }
   }

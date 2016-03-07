@@ -79,6 +79,30 @@ describe('jigsass-tools-mq', () => {
         .createsMediaQuery('print');
     });
 
+    describe('Active breakpoint declaration', () => {
+      it('Declares a named min-width breakpoint correctly', () => {
+        sassaby.includedMixin('test-active-bp')
+          .calledWithArgs('$from: tiny')
+          .equals('active-before:default;active-after:default}@media(min-width:20em){.test{active-during:tiny}');
+      });
+
+      it('Does not declare a non-named min-width breakpoint correctly', () => {
+        sassaby.includedMixin('test-active-bp')
+          .calledWithArgs('$from: 320px')
+          .equals('active-before:default;active-after:default}@media(min-width:20em){.test{active-during:default}');
+      });
+      it('Does not declare a named max-width breakpoint correctly', () => {
+        sassaby.includedMixin('test-active-bp')
+          .calledWithArgs('$until: tiny')
+          .equals('active-before:default;active-after:default}@media(max-width:19.99em){.test{active-during:default}');
+      });
+      it('Does not declare a non-named max-width breakpoint correctly', () => {
+        sassaby.includedMixin('test-active-bp')
+          .calledWithArgs('$until: tiny')
+          .equals('active-before:default;active-after:default}@media(max-width:19.99em){.test{active-during:default}');
+      });
+    });
+
     describe('Single condition', () => {
       it('Creates a min-width media query from a named length breakpoint', () => {
         sassaby.standaloneMixin('jigsass-mq')

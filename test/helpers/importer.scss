@@ -17,3 +17,11 @@ $alt-bps: (
     8bit: '(min-color: 8)',
   )
 );
+
+@mixin test-active-bp($from: false, $until: false) {
+  active-before: $jigsass-mq-active-breakpoint;
+  @include jigsass-mq($from, $until) {
+    active-during: $jigsass-mq-active-breakpoint;
+  }
+  active-after: $jigsass-mq-active-breakpoint;
+}
