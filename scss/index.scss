@@ -14,7 +14,9 @@
 // Dependencies
 // -------------------------------------
 
-@import '../node_modules/jigsass-tools-maps/scss/index';
+@if (not function-exists(jigsass-set)) {
+  @error '`jigsass-tools-mq` has a dependancy on `jigsass-tools-maps`. Please `@import` it.'
+}
 
 
 

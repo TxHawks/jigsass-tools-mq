@@ -5,8 +5,11 @@
 // General use testing helpers
 @import 'test/helpers/_test-helpers.scss';
 
-// project files.
-@import 'scss/index.scss';
+// project dependancies.
+@import 'node_modules/jigsass-tools-maps/scss/index';
+
+// Import project files.
+@import 'scss/index';
 
 $alt-bps: (
   lengths: (
