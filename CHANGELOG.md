@@ -1,5 +1,9 @@
 # Jigsass Mq Changelog
 
+## v1.2.1
+  - Fix bug which caused meaningless media queries to be outputted
+  - Fix tests for meaningless media queries
+
 ## v1.2.0
 Check for dependencies, but don't directly import them.
 

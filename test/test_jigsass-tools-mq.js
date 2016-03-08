@@ -155,7 +155,7 @@ describe('jigsass-tools-mq', () => {
             '.test{ color: red; }',
             '$from: 0'
           )
-          .doesNotCreateMediaQuery('(min-width: 0)');
+          .equals('.test{color:red}');
       });
 
       it('Doesn\'t create meaningless media query from a named breakpoint', () => {
@@ -164,7 +164,7 @@ describe('jigsass-tools-mq', () => {
             '.test{ color: red; }',
             '$from: default'
           )
-          .doesNotCreateMediaQuery('(min-width: 0)');
+          .equals('.test{color:red}');
       });
     });
 

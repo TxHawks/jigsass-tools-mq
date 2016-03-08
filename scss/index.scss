@@ -325,7 +325,7 @@ $jigsass-mq-media-type: all !default;
     }
 
     // Don't create meaningless media-queries
-    @if ($from != 0 or $until ot $misc or $media-type != all) {
+    @if ($min-width != 0 or $until or $misc or ($media-type != '' and $media-type != all)) {
       // Set the active min-width breakpoint
       $jigsass-mq-active-breakpoint: $_active-bp !global;
 
