@@ -6,6 +6,10 @@
 //    with a few minor adjustments
 //    for JigSass
 //
+////
+/// @group media queries
+////
+//
 // *************************************
 
 @charset  'UTF-8';
@@ -39,9 +43,11 @@
 /// argument, it will try and resolve values from the `features` sub-map.
 /// ---
 /// @type Map
-/// @prop {map} lengths - A map of `name: width` key-value pairs, defining widths for
+/// @prop {map} lengths
+///   A map of `name: width` key-value pairs, defining widths for
 ///   commonly used media queries. Used when evaluating the `$from` and `$until` arguments.
-/// @prop {map} features - A map of `name: rule` key-value pairs, defining commonly
+/// @prop {map} features
+///   A map of `name: rule` key-value pairs, defining commonly
 ///   used miscellaneous media-query features.
 ///   Used when evaluating the `$from` and `$until` arguments.
 $jigsass-breakpoints: (
@@ -66,8 +72,8 @@ $jigsass-breakpoints: (
 
 /// Get the name of the zero-sized breakpoint
 /// ---
-/// @param {Map} $breakpoints ($jigsass-breakpoints)
-///   - The map of breakpoints to iterate over.
+/// @param {Map} $breakpoints [$jigsass-breakpoints]
+///   The map of breakpoints to iterate over.
 /// ---
 /// @return {String} - The name of the default breakpoint
 /// ---
@@ -155,8 +161,10 @@ $jigsass-mq-media-type: all !default;
 /// ---
 /// @access private
 /// ---
-/// @param {string} $name - Breakpoint to get the width of
-/// @param {map} $breakpoints ($jigsass-breakpoints) - The map to search for the breakpoint in.
+/// @param {string} $name
+///   Breakpoint to get the width of
+/// @param {map} $breakpoints [$jigsass-breakpoints]
+///   The map to search for the breakpoint in.
 /// ---
 /// @example scss
 ///   $tablet-width: jigsass-mq-get-breakpoint-width(tablet);
@@ -183,18 +191,19 @@ $jigsass-mq-media-type: all !default;
 
 /// Generate media queries
 /// ---
-/// @param {String | Number | Boolean} $from (false) -
+/// @param {String | Number | Boolean} $from [false]
 ///   Min-width (inclusive) in pixels, or one of `$jigsass-breakpoints.lengths`
-/// @param {String | number | Boolean} $until (false) -
+/// @param {String | number | Boolean} $until [false]
 ///   Max-width (exclusive) in pixels, or one of `$jigsass-breakpoints.lengths`
-/// @param {String | List | Boolean} $misc (false) -
+/// @param {String | List | Boolean} $misc [false]
 ///   Miscellaneous media query parameters. One of `$jigsass-breakpoints.features`
 ///   or a free-form string. Can also be a list of multiple media-query features.
-/// @param {String} $media-type ($jigsass-mq-media-type) - Media type: screen, print…
+/// @param {String} $media-type [$jigsass-mq-media-type]
+///   Media type: screen, print…
 ///
 /// @ignore Undocumented API, for advanced use only:
-/// @ignore @param {String} $static-breakpoint ($jigsass-mq-static-breakpoint)
-///   - A custom static breakpoint, scoped for the current run of the mixin.
+/// @ignore @param {String} $static-breakpoint [$jigsass-mq-static-breakpoint]
+///   A custom static breakpoint, scoped for the current run of the mixin.
 /// ---
 /// @content styling rules, wrapped into a @media query when responsive mode in turned on.
 /// ---
@@ -263,8 +272,8 @@ $jigsass-mq-media-type: all !default;
       $max-width: _jigsass-mq-px2em($until);
     }
     @else {
-      @if type-of(jigsass-mq-get-breakpoint-width($from, $breakpoints)) == 'string' {
-        @error 'jigsass-mq: ${$from} is not a length breakpoint in `$jigsass-breakpoints`.';
+      @if type-of(jigsass-mq-get-breakpoint-width($until, $breakpoints)) == 'string' {
+        @error 'jigsass-mq: ${$until} is not a length breakpoint in `$jigsass-breakpoints`.';
       }
 
       $max-width: _jigsass-mq-px2em(jigsass-mq-get-breakpoint-width($until, $breakpoints)) - .01em;
@@ -341,17 +350,17 @@ $jigsass-mq-media-type: all !default;
 /// Tweak the list of defined breakpoints within the scope of the mixin's `@content`
 /// ---
 /// @param {Map} $tweakpoints [()]
-///   - A map of named breakpoints to add to (or be used to overwrite)
-///     the existing breakpoints in $jigsass-breakpoints.
+///   A map of named breakpoints to add to (or be used to overwrite)
+///   the existing breakpoints in $jigsass-breakpoints.
 /// @param {Map} $length-tweakpoints [()]
-///   - A map of named lengths to add to (or be used to overwrite)
-///     the existing length-breakpoints.
+///   A map of named lengths to add to (or be used to overwrite)
+///   the existing length-breakpoints.
 /// @param {Map} $length-tweakpoints [()]
-///   - A map of named miscellaneous media-query features to add to
-///     (or be used to overwrite) the existing feature-breakpoints.
-/// @param {Boolean} $overwrite (false)
-///   - Determines whether the tweakpoints should overwritethe
-///     existing breakpoints, or be merged into them.
+///   A map of named miscellaneous media-query features to add to
+///   (or be used to overwrite) the existing feature-breakpoints.
+/// @param {Boolean} $overwrite [false]
+///   Determines whether the tweakpoints should overwrite the
+///   existing breakpoints, or be merged into them.
 /// ---
 /// @example scss - Add a custom length breakpoint
 ///   @include jigsass-tweakpoints(('masthead-collapse': 550px)) {
@@ -437,16 +446,6 @@ $jigsass-mq-media-type: all !default;
 
 
 // -------------------------------------
-// States
-// -------------------------------------
-
-//
-
-
-
-
-
-// -------------------------------------
 // Private helpers
 // -------------------------------------
 
@@ -456,8 +455,9 @@ $jigsass-mq-media-type: all !default;
 /// ---
 /// @access private
 /// ---
-/// @param {Number} $px - value to convert
-/// @param {boolean} $supress-warnings (false) -
+/// @param {Number} $px
+///   value to convert
+/// @param {boolean} $supress-warnings [false]
 ///   Suppress warnings about converting unitless numbers into pixels.
 /// ---
 /// @returns {Number} - The converted number in ems
@@ -496,8 +496,3 @@ $jigsass-mq-media-type: all !default;
 
   @return ($px / $_browser-default-font-size) * 1em;
 }
-
-
-
-
-

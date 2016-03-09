@@ -244,6 +244,7 @@ describe('jigsass-tools-mq', () => {
       });
 
       it('Can overwrites existing length breakpoints', () => {
+        // This raises a warning that is visible in test output.
         assert.throws(() => {
           sassaby.standaloneMixin('jigsass-mq-tweakpoints')
             .calledWithBlockAndArgs(
@@ -290,6 +291,7 @@ describe('jigsass-tools-mq', () => {
     });
 
     it('Can overwrite the default lengths breakpoints map', () => {
+      // This raises a warning that is visible in test output.
       assert.throws(() => {
         sassaby.standaloneMixin('jigsass-mq-tweakpoints')
         .calledWithBlockAndArgs(
@@ -300,6 +302,7 @@ describe('jigsass-tools-mq', () => {
     });
 
     it('Can overwrite the default features breakpoints map', () => {
+      // This raises a warning that is visible in test output.
       assert.throws(() => {
         sassaby.standaloneMixin('jigsass-mq-tweakpoints')
         .calledWithBlockAndArgs(
@@ -310,4 +313,3 @@ describe('jigsass-tools-mq', () => {
     });
   });
 });
-
