@@ -35,7 +35,7 @@
     "prepublish": "gulp prepublish"
   },
   "dependencies": {
-    "jigsass-tools-maps": "^1.0.2"
+    "jigsass-tools-maps": "^1.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",
