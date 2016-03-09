@@ -1,5 +1,8 @@
 # Jigsass Mq Changelog
 
+## v1.2.2
+Fix a bug in `max-width` media queries
+
 ## v1.2.1
   - Fix bug which caused meaningless media queries to be outputted
   - Fix tests for meaningless media queries
