@@ -1,5 +1,8 @@
 # Jigsass Mq Changelog
 
+## v1.2.4
+Don't generate (max-width: 0) media queries
+
 ## v1.2.3
 Fix a typo in name of static breakpoint
 
