@@ -149,7 +149,7 @@ describe('jigsass-tools-mq', () => {
           .createsMediaQuery('(orientation: landscape)');
       });
 
-      it('Doesn\'t create meaningless media query from a number', () => {
+      it('Doesn\'t create meaningless min-width media query from a number', () => {
         sassaby.standaloneMixin('jigsass-mq')
           .calledWithBlockAndArgs(
             '.test{ color: red; }',
@@ -158,11 +158,20 @@ describe('jigsass-tools-mq', () => {
           .equals('.test{color:red}');
       });
 
-      it('Doesn\'t create meaningless media query from a named breakpoint', () => {
+      it('Doesn\'t create meaningless min-width media query from a named breakpoint', () => {
         sassaby.standaloneMixin('jigsass-mq')
           .calledWithBlockAndArgs(
             '.test{ color: red; }',
             '$from: default'
+          )
+          .equals('.test{color:red}');
+      });
+
+      it('Doesn\'t create meaningless max-width media query from a named breakpoint', () => {
+        sassaby.standaloneMixin('jigsass-mq')
+          .calledWithBlockAndArgs(
+            '.test{ color: red; }',
+            '$until: default'
           )
           .equals('.test{color:red}');
       });
