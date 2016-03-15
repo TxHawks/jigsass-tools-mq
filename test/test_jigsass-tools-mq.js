@@ -6,7 +6,7 @@ describe('jigsass-tools-mq', () => {
   const file = path.resolve(__dirname, 'helpers/importer.scss');
   const sassaby = new Sassaby(file);
 
-  describe('_jigsass-mq-px2em function', () => {
+  describe('_jigsass-mq-px2em [function]', () => {
     describe('Invalid values', () => {
       it('Throws an error when `$px` is not a number', () => {
         assert.throws(() => {
@@ -56,7 +56,7 @@ describe('jigsass-tools-mq', () => {
     });
   });
 
-  describe('jigsass-mq-get-breakpoint-width function', () => {
+  describe('jigsass-mq-get-breakpoint-width [function]', () => {
     it('Gets breakpoint width from default map', () => {
       sassaby.func('jigsass-mq-get-breakpoint-width')
         .calledWithArgs('tiny')
@@ -69,7 +69,15 @@ describe('jigsass-tools-mq', () => {
     });
   });
 
-  describe('jigsass-mq mixin', () => {
+  describe('jigsass-get-default-breakpoint [function]', () => {
+    it('Gets the default breakpoint', () => {
+      sassaby.func('jigsass-get-default-breakpoint')
+        .calledWithArgs('')
+        .equals('default')
+    });
+  });
+
+  describe('jigsass-mq [mixin]', () => {
     it('Changes the media type', () => {
       sassaby.standaloneMixin('jigsass-mq')
         .calledWithBlockAndArgs(
@@ -205,7 +213,7 @@ describe('jigsass-tools-mq', () => {
     });
   });
 
-  describe('jigsass-mq-tweakpoints mixin', () => {
+  describe('jigsass-mq-tweakpoints [mixin]', () => {
     describe('Extends the $jigsass-breakpoints', () => {
       it('Creates a new length breakpoint', () => {
         sassaby.standaloneMixin('jigsass-mq-tweakpoints')

@@ -1,5 +1,16 @@
 # Jigsass Mq Changelog
 
+## v1.2.5
+Prepare for deprecation of `_get-default-breakpoint`.
+Add `jigsass-get-default-breakpoint`, and make `_get-default-breakpoint` an 
+alias to it.
+
+Add a deprecation warning to `_get-default-breakpoint`.
+
+Add tests for `jigsass-get-default-breakpoint`.
+
+Update documentation.
+
 ## v1.2.4
 Don't generate (max-width: 0) media queries
 

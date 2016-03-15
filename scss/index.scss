@@ -35,8 +35,8 @@
 /// Breakpoint names and values can and should be redefined to fit a
 /// project design and the language used be the team working on it.
 /// However, please keep in mind that **the JigSass framework depends
-/// on a 0-sized length breakpoint being defined**, as it is internally
-/// used to set up default values in several places.
+/// on a 0-sized length breakpoint called `default` being defined**,
+/// as it is internally used to set up default values in several places.
 ///
 /// The `jigsass-mq` mixin will try and resolve values from the `lengths` sub-map
 /// when evaluating the `$from` and `$until` arguments. When evaluating the `$misc`
@@ -77,7 +77,7 @@ $jigsass-breakpoints: (
 /// ---
 /// @return {String} - The name of the default breakpoint
 /// ---
-@function _get-default-breakpoint($breakpoints: $jigsass-breakpoints) {
+@function jigsass-get-default-breakpoint($breakpoints: $jigsass-breakpoints) {
   $default-bp: null;
 
   @each $bp-name, $bp in map-get($breakpoints, lengths) {
@@ -89,10 +89,18 @@ $jigsass-breakpoints: (
   @return $default-bp;
 }
 
+// For deprecation
+@function _get-default-breakpoint($breakpoints: $jigsass-breakpoints) {
+  @warn 'DEPRECATION WARNING: The `_get-default-breakpoint` function will be depracated in the ' +
+    'next major release of `jigsass-tools-mq`. Use `jigsass-get-default-breakpoint` instead.';
+
+  @return jigsass-get-default-breakpoint($breakpoints);
+}
+
 
 /// The name of the currently active min-width breakpoint
 /// @type String
-$jigsass-mq-active-breakpoint: _get-default-breakpoint();
+$jigsass-mq-active-breakpoint: jigsass-get-default-breakpoint();
 
 
 /// Responsive mode
@@ -149,7 +157,8 @@ $jigsass-mq-show-breakpoints: () !default;
 /// By default jigsass-mq does not restrict the media type (`@media …`)
 /// ---
 /// @type String
-/// @link https://github.com/TxHawks/tools-jigsass-mq#changing-media-type Full documentation and examples
+/// @link https://github.com/TxHawks/tools-jigsass-mq#changing-media-type
+///   Full documentation and examples
 $jigsass-mq-media-type: all !default;
 
 
@@ -326,7 +335,7 @@ $jigsass-mq-media-type: all !default;
   @else {
     @if $min-width != 0 { $media-query: '#{$media-query} and (min-width: #{$min-width})'; }
     @if $max-width != 0 { $media-query: '#{$media-query} and (max-width: #{$max-width})'; }
-    @if $misc-features        { $media-query: '#{$media-query} and #{$misc-features}'; }
+    @if $misc-features  { $media-query: '#{$media-query} and #{$misc-features}'; }
 
     // Remove unnecessary media query prefix 'all and '
     @if ($media-type == 'all' and $media-query != '') {
