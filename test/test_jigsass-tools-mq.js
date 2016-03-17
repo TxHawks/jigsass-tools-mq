@@ -69,6 +69,26 @@ describe('jigsass-tools-mq', () => {
     });
   });
 
+  describe('jigsass-mq-breakpoint-defined [function]', () => {
+    it('Returns true if a length breakpoint is defined', () => {
+      sassaby.func('jigsass-mq-breakpoint-defined')
+        .calledWithArgs('small')
+        .isTrue();
+    });
+
+    it('Returns true if a misc feature breakpoint is defined', () => {
+      sassaby.func('jigsass-mq-breakpoint-defined')
+        .calledWithArgs('landscape')
+        .isTrue();
+    });
+
+    it('Returns false if a breakpoint is not defined', () => {
+      sassaby.func('jigsass-mq-breakpoint-defined')
+        .calledWithArgs('bogus')
+        .isFalse();
+    });
+  });
+
   describe('jigsass-get-default-breakpoint [function]', () => {
     it('Gets the default breakpoint', () => {
       sassaby.func('jigsass-get-default-breakpoint')

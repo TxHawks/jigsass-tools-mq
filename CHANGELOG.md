@@ -1,5 +1,8 @@
 # Jigsass Mq Changelog
 
+## v1.3.0
+Add `jigsass-mq-get-breakpoint` function to check if a named breakpoint is defined.
+
 ## v1.2.5
 Prepare for deprecation of `_get-default-breakpoint`.
 Add `jigsass-get-default-breakpoint`, and make `_get-default-breakpoint` an 

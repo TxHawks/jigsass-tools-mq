@@ -191,6 +191,21 @@ $jigsass-mq-media-type: all !default;
 }
 
 
+/// Check if a breakpoint is defined as a named breakpoint
+/// ---
+/// @param {String} $breakpoint
+///   The breakpoint name to check for.
+/// @param {Map} $breakpoints [$jigsass-breakpoints]
+///   The map to check for `$breakpoint` in.
+/// ---
+/// @return {Boolean} Is the breakpoint defined.
+/// ---
+@function jigsass-mq-breakpoint-defined($breakpoint, $breakpoints: $jigsass-breakpoints) {
+  @return jigsass-deep-has-key($breakpoints, lengths, $breakpoint) or
+    jigsass-deep-has-key($breakpoints, features, $breakpoint);
+}
+
+
 
 
 
