@@ -1,5 +1,8 @@
 # Jigsass Mq Changelog
 
+## v1.4.0
+Add `jigsass-mq-sort-length-breakpoints` function.
+
 ## v1.3.0
 Add `jigsass-mq-get-breakpoint` function to check if a named breakpoint is defined.
 

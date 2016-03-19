@@ -191,6 +191,62 @@ $jigsass-mq-media-type: all !default;
 }
 
 
+/// Sort length breakpoints by size from small to large.
+/// ---
+/// @param {Map} $bps [$jigsass-breakpoints.lengths]
+///   The breakpoints to sort
+/// ---
+/// @return {Map}
+///   The sorted breakpoints
+/// ---
+@function jigsass-mq-sort-length-breakpoints($bps: map-get($jigsass-breakpoints, lengths)) {
+  $bp-names: map-keys($bps);
+  $bp-values: map-values($bps);
+  $temp-bp-values: $bp-values;  // Used for sorting
+  $sorted-bp-values: ();
+
+  @each $bp-name, $bp-value in $bps {
+    @if (type-of($bp-value) != number) {
+      @error 'jigsass-mq-sort-length-breakpoints: Length breakpoints must resolve to numbers, ' +
+        'but `#{$bp-name}` is `#{inspect($bp-value)}`, which is a `#{type-of($bp-value)}`';
+    }
+  }
+
+  // Sort breakpoint widths from small to large
+  @while length($temp-bp-values) > 0 {
+    $smallest: nth($temp-bp-values, 1);
+
+    @each $bp-value in $temp-bp-values {
+      $smallest: if($bp-value < $smallest, $bp-value, $smallest);
+    }
+
+    // Append smallest value to sorted list
+    $sorted-bp-values: append($sorted-bp-values, $smallest);
+
+    // Remove smallest value from list and continue iterating.
+    $values: ();
+    @each $i in $temp-bp-values {
+      @if ($i != $smallest) {
+        $values: append($values, $i);
+      }
+    }
+    $temp-bp-values: $values;
+  }
+
+  $breakpoints: ();
+  @each $bp-value in $sorted-bp-values {
+    $original-position: index($bp-values, $bp-value);
+
+    $breakpoints: map-merge(
+      $breakpoints,
+      (nth($bp-names, $original-position) : $bp-value)
+    );
+  }
+
+  @return $breakpoints;
+}
+
+
 /// Check if a breakpoint is defined as a named breakpoint
 /// ---
 /// @param {String} $breakpoint

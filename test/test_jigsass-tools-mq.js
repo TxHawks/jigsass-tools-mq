@@ -69,6 +69,56 @@ describe('jigsass-tools-mq', () => {
     });
   });
 
+
+  describe('jigsass-mq-sort-length-breakpoints [function]', () => {
+    const sassaby = new Sassaby(file, {
+      variables: {
+        'jigsass-breakpoints': '(' +
+          'lengths: (' +
+            'large: 2400px, ' +
+            'small: 320px, ' +
+            'medium: 620px, ' +
+          '),' +
+          'features: (' +
+            'landscape: (orientation: landscape), ' +
+          ')' +
+        ')',
+        'bps': '(' +
+          'lengths: (' +
+            'large: 1400px, ' +
+            'small: 320px, ' +
+            'medium: 620px, ' +
+          '),' +
+          'features: (' +
+            'landscape: (orientation: landscape), ' +
+          ')' +
+        ')'
+      }
+    })
+
+    it('Gets breakpoint width from default map', () => {
+      sassaby.func('inspect')
+        .calledWithArgs('jigsass-mq-sort-length-breakpoints()')
+        .equals('(small:320px,medium:620px,large:2400px)');
+    });
+
+    it('Gets breakpoint width from a custom map', () => {
+      sassaby.func('inspect')
+        .calledWithArgs('jigsass-mq-sort-length-breakpoints(map-get($bps, lengths))')
+        .equals('(small:320px,medium:620px,large:1400px)');
+    });
+
+    it('Throws when one of the keys\' value is not a number' , () => {
+      assert.throws(
+        () => {
+          sassaby.func('inspect')
+            .calledWithArgs('jigsass-mq-sort-length-breakpoints($bps)')
+        },
+        /jigsass-mq-sort-length-breakpoints: Length breakpoints must resolve to numbers, but `lengths` is `\(large: 1400px, small: 320px, medium: 620px\)`, which is a `map`/
+      );
+    });
+  });
+
   describe('jigsass-mq-breakpoint-defined [function]', () => {
     it('Returns true if a length breakpoint is defined', () => {
       sassaby.func('jigsass-mq-breakpoint-defined')
