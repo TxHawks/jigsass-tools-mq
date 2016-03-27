@@ -338,7 +338,7 @@ $jigsass-mq-media-type: all !default;
     }
     @else {
       @if type-of(jigsass-mq-get-breakpoint-width($from, $breakpoints)) == 'string' {
-        @error 'jigsass-mq: ${$from} is not a length breakpoint in `$jigsass-breakpoints`.';
+        @error 'jigsass-mq: #{$from} is not a length breakpoint in `$jigsass-breakpoints`.';
       }
       // Set the active min-width breakpoint
       $_active-bp: $from;
@@ -353,7 +353,7 @@ $jigsass-mq-media-type: all !default;
     }
     @else {
       @if type-of(jigsass-mq-get-breakpoint-width($until, $breakpoints)) == 'string' {
-        @error 'jigsass-mq: ${$until} is not a length breakpoint in `$jigsass-breakpoints`.';
+        @error 'jigsass-mq: #{$until} is not a length breakpoint in `$jigsass-breakpoints`.';
       }
 
       $_max-value: jigsass-mq-get-breakpoint-width($until, $breakpoints);

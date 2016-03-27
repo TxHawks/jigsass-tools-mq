@@ -1,5 +1,8 @@
 # Jigsass Mq Changelog
 
+## v1.4.1
+Fix type in error message variable interpolation
+
 ## v1.4.0
 Add `jigsass-mq-sort-length-breakpoints` function.
 
