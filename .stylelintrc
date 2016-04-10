@@ -19,7 +19,7 @@
 
     "string-quotes": "single",
 
-    "value-list-comma-space-after": "always",
+    "value-list-comma-space-after": "always-single-line",
     "value-list-comma-space-before": "never",
 
     "declaration-bang-space-after": "never",

@@ -99,6 +99,7 @@ $jigsass-breakpoints: (
 
 
 /// The name of the currently active min-width breakpoint
+/// ---
 /// @type String
 $jigsass-mq-active-breakpoint: jigsass-get-default-breakpoint();
 
