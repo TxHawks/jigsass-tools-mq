@@ -379,18 +379,17 @@ pre[class*='language-'] {
       z-index: 2;
       transition: 0.25s cubic-bezier(0.215, 0.61, 0.355, 1)
     }
-
-		.sidebar__logo {
-			margin-top: 0;
-		}
   }
 
   .sidebar__annotation {
     color: #5c4863
   }
+  .sassdoc__item {
+    font-size: 0.875rem;
+    margin-left: 3rem;
+  }
   .sidebar__item {
     padding: 0;
-    margin-left: 1rem;
   }
   .sidebar__item a {
     box-shadow: 0 1px 0 0 rgba(0,0,0,.1);
@@ -411,12 +410,11 @@ pre[class*='language-'] {
   }
   .sidebar__item--heading {
     color: #09a5d9;
-    font-weight: 1.2em
+    font-size: 1.2em;
     font-weight: 300;
   }
   .sidebar__item--sub-heading {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-left: 1rem;
     transition: color .25s ease-out;
   }
   .sidebar__item--sub-heading:hover a {
@@ -706,7 +704,8 @@ pre[class*='language-'] {
     float: right;
     padding-top: 0.9em;
     color: #c4c4c4;
-    margin-bottom: 1em
+    margin-bottom: 1em;
+    margin-top: 4.5em;
   }
   .item__source-link {
     position: absolute;
