@@ -19,7 +19,7 @@
 // -------------------------------------
 
 @if (not function-exists(jigsass-set)) {
-  @error '`jigsass-tools-mq` has a dependancy on `jigsass-tools-maps`. Please `@import` it.'
+  @error '`jigsass-tools-mq` has a dependancy on `jigsass-tools-maps`. Please `@import` it.';
 }
 
 
@@ -573,7 +573,7 @@ $jigsass-mq-media-type: all !default;
 
   // Error out on all other non-pixel units.
   @if (unit($px) != px) {
-    @error '_jigsass-mq-px2em: Only px values can be safely converted into ems.'
+    @error '_jigsass-mq-px2em: Only px values can be safely converted into ems.';
   }
 
   $_result: ($px / $_browser-default-font-size) * 1em;
