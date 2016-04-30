@@ -544,8 +544,8 @@ $jigsass-mq-media-type: all !default;
 /// @param {String} $element [head]
 ///   The element to attach JSON data to.
 ///
-///   The JSON string will be attached to the `::after` psudo-element inside the
-///   specified element.
+///   The JSON string will be attached to the `content` property of the
+///   `::after` psudo-element of the specified element.
 /// ---
 @mixin jigsass-mq-export-length-bps($element: head) {
   $_bps: jigsass-mq-sort-length-breakpoints();
@@ -641,33 +641,31 @@ $jigsass-mq-media-type: all !default;
   $_active-value: map-get($_bps, $active-bp);
 
   @each $name, $value in $_bps {
-    @if ($value != 0) {
-      $_values: append($_values, '"' + $name + '": "' + $value + '"', comma);
-      $_from: append(
-        $_from,
-        '"#{$name}": {"from": "#{$value}", "active": #{$value >= $_active-value}}',
-        comma
-      );
-      $_until: append(
-        $_until,
-        '"#{$name}": {"until": "#{$value}", "active": #{$value < $_active-value}}',
-        comma
-      );
+    $_values: append($_values, '"' + $name + '": "' + $value + '"', comma);
+    $_from: append(
+      $_from,
+      '"#{$name}": {"from": "#{$value}", "active": #{$_active-value >= $value}}',
+      comma
+    );
+    $_until: append(
+      $_until,
+      '"#{$name}": {"until": "#{$value}", "active": #{$_active-value < $value}}',
+      comma
+    );
 
-      @each $max-name, $max-value in $_bps {
-        @if ($max-value != 0) {
-          $min-value: $value;
-          $min-name: $name;
+    @each $max-name, $max-value in $_bps {
+      @if ($max-value != 0) {
+        $min-value: $value;
+        $min-name: $name;
 
-          @if ($max-value > $min-value) {
-            // stylelint-disable max-line-length
-            $_from-until: append(
-              $_from-until,
-              '"#{$min-name}-until-#{$max-name}": {"from": "#{$min-value}", "until": "#{$max-value}", "active": #{$min-value >= $_active-value and $max-value < $_active-value}}',
-              comma
-            );
-            // stylelint-enable max-line-length
-          }
+        @if ($max-value > $min-value) {
+          // stylelint-disable max-line-length
+          $_from-until: append(
+            $_from-until,
+            '"#{$min-name}-until-#{$max-name}": {"from": "#{$min-value}", "until": "#{$max-value}", "active": #{$_active-value >= $min-value and $_active-value < $max-value}}',
+            comma
+          );
+          // stylelint-enable max-line-length
         }
       }
     }
