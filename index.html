@@ -107,33 +107,31 @@ color: red;
   $_active-value: map-get($_bps, $active-bp);
 
   @each $name, $value in $_bps {
-    @if ($value != 0) {
-      $_values: append($_values, &#39;&quot;&#39; + $name + &#39;&quot;: &quot;&#39; + $value + &#39;&quot;&#39;, comma);
-      $_from: append(
-        $_from,
-        &#39;&quot;#{$name}&quot;: {&quot;from&quot;: &quot;#{$value}&quot;, &quot;active&quot;: #{$value &gt;= $_active-value}}&#39;,
-        comma
-      );
-      $_until: append(
-        $_until,
-        &#39;&quot;#{$name}&quot;: {&quot;until&quot;: &quot;#{$value}&quot;, &quot;active&quot;: #{$value &lt; $_active-value}}&#39;,
-        comma
-      );
+    $_values: append($_values, &#39;&quot;&#39; + $name + &#39;&quot;: &quot;&#39; + $value + &#39;&quot;&#39;, comma);
+    $_from: append(
+      $_from,
+      &#39;&quot;#{$name}&quot;: {&quot;from&quot;: &quot;#{$value}&quot;, &quot;active&quot;: #{$_active-value &gt;= $value}}&#39;,
+      comma
+    );
+    $_until: append(
+      $_until,
+      &#39;&quot;#{$name}&quot;: {&quot;until&quot;: &quot;#{$value}&quot;, &quot;active&quot;: #{$_active-value &lt; $value}}&#39;,
+      comma
+    );
 
-      @each $max-name, $max-value in $_bps {
-        @if ($max-value != 0) {
-          $min-value: $value;
-          $min-name: $name;
+    @each $max-name, $max-value in $_bps {
+      @if ($max-value != 0) {
+        $min-value: $value;
+        $min-name: $name;
 
-          @if ($max-value &gt; $min-value) {
-            // stylelint-disable max-line-length
-            $_from-until: append(
-              $_from-until,
-              &#39;&quot;#{$min-name}-until-#{$max-name}&quot;: {&quot;from&quot;: &quot;#{$min-value}&quot;, &quot;until&quot;: &quot;#{$max-value}&quot;, &quot;active&quot;: #{$min-value &gt;= $_active-value and $max-value &lt; $_active-value}}&#39;,
-              comma
-            );
-            // stylelint-enable max-line-length
-          }
+        @if ($max-value &gt; $min-value) {
+          // stylelint-disable max-line-length
+          $_from-until: append(
+            $_from-until,
+            &#39;&quot;#{$min-name}-until-#{$max-name}&quot;: {&quot;from&quot;: &quot;#{$min-value}&quot;, &quot;until&quot;: &quot;#{$max-value}&quot;, &quot;active&quot;: #{$_active-value &gt;= $min-value and $_active-value &lt; $max-value}}&#39;,
+            comma
+          );
+          // stylelint-enable max-line-length
         }
       }
     }
@@ -424,4 +422,4 @@ $jigsass-mq-static-breakpoint: tablet;
       }
     }
   }
- }" data-collapsed="@mixin jigsass-mq-export-length-bps($element: head) { ... }"><code>@mixin jigsass-mq-export-length-bps($element: head) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Export a JSON-like representation of defined breakpoints, and indicate if given breakpoint is active at given viewport conditions.</p><p>The exported JSON will have to following keys:</p><ul><li><strong>values:</strong> an object with <code>&lt;name&gt;: &lt;length&gt;</code> pairs for each defined length breakpoint.</li><li><strong>from:</strong> an object with a key for each defined breakpoint, containing a nested object with <code>from: &lt;value&gt;</code> and <code>active: &lt;boolean&gt;</code> keys.</li><li><strong>until:</strong> an object with a key for each defined breakpoint, containing a nested object with <code>until: &lt;value&gt;</code> and <code>active: &lt;boolean&gt;</code> keys.</li><li><strong>from-until:</strong> an object with a key for each defined breakpoint, containing a nested object with <code>from: &lt;value&gt;</code>, <code>until: &lt;value&gt;</code> and <code>active: &lt;boolean&gt;</code> keys.</li></ul><p>The mixin produces pretty heavy CSS (8.4k in default settings), but one that gets gzipped very well (8.4k -&gt; 452b).</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter</span>Name</th><th scope="col"><span class="visually-hidden">parameter</span>Description</th><th scope="col"><span class="visually-hidden">parameter</span>Type</th><th scope="col"><span class="visually-hidden">parameter</span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$element</code></th><td data-label="desc"><p>The element to attach JSON data to.</p><p>The JSON string will be attached to the <code>::after</code> psudo-element inside the specified element.</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>head</code></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#mixin-jigsass-mq"><code>jigsass-mq</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#function-jigsass-mq-sort-length-breakpoints"><code>jigsass-mq-sort-length-breakpoints</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#function-_jigsass-mq-bps-to-json"><code>_jigsass-mq-bps-to-json</code></a></li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --><span class="project-info__name">Jigsass-tools-mq</span><!-- Version --> <span class="project-info__version">- v1.5.0</span><!-- License --> <span class="project-info__license">, under MIT</span></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>
+ }" data-collapsed="@mixin jigsass-mq-export-length-bps($element: head) { ... }"><code>@mixin jigsass-mq-export-length-bps($element: head) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Export a JSON-like representation of defined breakpoints, and indicate if given breakpoint is active at given viewport conditions.</p><p>The exported JSON will have to following keys:</p><ul><li><strong>values:</strong> an object with <code>&lt;name&gt;: &lt;length&gt;</code> pairs for each defined length breakpoint.</li><li><strong>from:</strong> an object with a key for each defined breakpoint, containing a nested object with <code>from: &lt;value&gt;</code> and <code>active: &lt;boolean&gt;</code> keys.</li><li><strong>until:</strong> an object with a key for each defined breakpoint, containing a nested object with <code>until: &lt;value&gt;</code> and <code>active: &lt;boolean&gt;</code> keys.</li><li><strong>from-until:</strong> an object with a key for each defined breakpoint, containing a nested object with <code>from: &lt;value&gt;</code>, <code>until: &lt;value&gt;</code> and <code>active: &lt;boolean&gt;</code> keys.</li></ul><p>The mixin produces pretty heavy CSS (8.4k in default settings), but one that gets gzipped very well (8.4k -&gt; 452b).</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter</span>Name</th><th scope="col"><span class="visually-hidden">parameter</span>Description</th><th scope="col"><span class="visually-hidden">parameter</span>Type</th><th scope="col"><span class="visually-hidden">parameter</span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$element</code></th><td data-label="desc"><p>The element to attach JSON data to.</p><p>The JSON string will be attached to the <code>content</code> property of the <code>::after</code> psudo-element of the specified element.</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>head</code></td></tr></tbody></table><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[mixin]</span> <a href="#mixin-jigsass-mq"><code>jigsass-mq</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#function-jigsass-mq-sort-length-breakpoints"><code>jigsass-mq-sort-length-breakpoints</code></a></li><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#function-_jigsass-mq-bps-to-json"><code>_jigsass-mq-bps-to-json</code></a></li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --><span class="project-info__name">Jigsass-tools-mq</span><!-- Version --> <span class="project-info__version">- v1.5.0</span><!-- License --> <span class="project-info__license">, under MIT</span></div><a class="footer__watermark" href="http://sassdoc.com"><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"></a></div></footer></article><script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>
