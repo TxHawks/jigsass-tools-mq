@@ -36,14 +36,14 @@
     "prepublish": "gulp prepublish"
   },
   "dependencies": {
-    "jigsass-tools-maps": "^1.0.8"
+    "jigsass-tools-maps": "^1.0.10"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.7.7",
     "babel-preset-es2015": "^6.5.0",
     "babel-register": "^6.6.5",
-    "browser-sync": "^2.12.3",
+    "browser-sync": "^2.12.5",
     "chai": "^3.5.0",
     "del": "^2.2.0",
     "eyeglass": "^0.8.3",
@@ -62,7 +62,7 @@
     "sassaby": "^2.1.1",
     "sassdoc": "^2.1.20",
     "sassdoc-theme-jigsass": "^0.2.15",
-    "stylelint": "^6.1.0"
+    "stylelint": "^6.2.2"
   },
   "description": "Easy peasy media queries. Based on Kaelig's Sass-mq, with a few minor adjustments for JigSass",
   "license": "MIT"

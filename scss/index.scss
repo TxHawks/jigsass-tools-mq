@@ -524,6 +524,43 @@ $jigsass-mq-media-type: all !default;
 }
 
 
+/// Export a JSON-like representation of defined breakpoints,
+/// and indicate if given breakpoint is active at given viewport
+/// conditions.
+///
+/// The exported JSON will have to following keys:
+///   - **values:** an object with `<name>: <length>` pairs for
+///     each defined length breakpoint.
+///   - **from:** an object with a key for each defined breakpoint, containing
+///     a nested object with `from: <value>` and `active: <boolean>` keys.
+///   - **until:** an object with a key for each defined breakpoint, containing
+///     a nested object with `until: <value>` and `active: <boolean>` keys.
+///   - **from-until:** an object with a key for each defined breakpoint, containing
+///     a nested object with `from: <value>`, `until: <value>` and `active: <boolean>` keys.
+///
+/// The mixin produces pretty heavy CSS (8.4k in default settings), but one
+/// that gets gzipped very well (8.4k -> 452b).
+/// ---
+/// @param {String} $element [head]
+///   The element to attach JSON data to.
+///
+///   The JSON string will be attached to the `::after` psudo-element inside the
+///   specified element.
+/// ---
+@mixin jigsass-mq-export-length-bps($element: head) {
+  $_bps: jigsass-mq-sort-length-breakpoints();
+
+  @each $name, $value in $_bps {
+    @include jigsass-mq($name) {
+      #{$element}:after {
+        content: _jigsass-mq-bps-to-json($name);
+        display: none;
+      }
+    }
+  }
+}
+
+
 
 
 
@@ -581,4 +618,65 @@ $jigsass-mq-media-type: all !default;
   // stylelint-disable
   @return if($_result == 0em, 0, $_result);
   // stylelint-enable
+}
+
+
+/// A helper function which generates a JSON-like
+/// string with information about length breakpoint
+/// values and which breakpoints are currently active.
+///
+/// ---
+/// @param {String} $active-bp
+///   The name of the length breakpoint to evaluate active breakpoints for.
+/// ---
+/// @return {String} - A JSON-like string
+/// ---
+@function _jigsass-mq-bps-to-json($active-bp) {
+  $_values: ();
+  $_from: ();
+  $_until: ();
+  $_from-until: ();
+
+  $_bps: jigsass-mq-sort-length-breakpoints();
+  $_active-value: map-get($_bps, $active-bp);
+
+  @each $name, $value in $_bps {
+    @if ($value != 0) {
+      $_values: append($_values, '"' + $name + '": "' + $value + '"', comma);
+      $_from: append(
+        $_from,
+        '"#{$name}": {"from": "#{$value}", "active": #{$value >= $_active-value}}',
+        comma
+      );
+      $_until: append(
+        $_until,
+        '"#{$name}": {"until": "#{$value}", "active": #{$value < $_active-value}}',
+        comma
+      );
+
+      @each $max-name, $max-value in $_bps {
+        @if ($max-value != 0) {
+          $min-value: $value;
+          $min-name: $name;
+
+          @if ($max-value > $min-value) {
+            // stylelint-disable max-line-length
+            $_from-until: append(
+              $_from-until,
+              '"#{$min-name}-until-#{$max-name}": {"from": "#{$min-value}", "until": "#{$max-value}", "active": #{$min-value >= $_active-value and $max-value < $_active-value}}',
+              comma
+            );
+            // stylelint-enable max-line-length
+          }
+        }
+      }
+    }
+  }
+
+  $_values: '{"values": {' + $_values + '}';
+  $_from: '"from": {#{$_from}}';
+  $_until: '"until": {#{$_until}}';
+  $_from-until: '"from-until": {#{$_from-until}}}';
+
+  @return '#{$_values}, #{$_from}, #{$_until}, #{$_from-until}';
 }
