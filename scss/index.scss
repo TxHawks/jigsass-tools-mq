@@ -541,13 +541,13 @@ $jigsass-mq-media-type: all !default;
 /// The mixin produces pretty heavy CSS (8.4k in default settings), but one
 /// that gets gzipped very well (8.4k -> 452b).
 /// ---
-/// @param {String} $element [head]
+/// @param {String} $element [body]
 ///   The element to attach JSON data to.
 ///
 ///   The JSON string will be attached to the `content` property of the
 ///   `::after` psudo-element of the specified element.
 /// ---
-@mixin jigsass-mq-export-length-bps($element: head) {
+@mixin jigsass-mq-export-length-bps($element: body) {
   $_bps: jigsass-mq-sort-length-breakpoints();
 
   @each $name, $value in $_bps {
